@@ -336,7 +336,7 @@ export default function Home() {
                 }
               }}
             >
-              {/* 📍 Airport Pins */}
+              {/* Airport Pins */}
               {Object.entries(AIRPORTS).map(([code, ap]) => (
                 <Marker
                   key={code}
@@ -364,7 +364,7 @@ export default function Home() {
                 </Marker>
               ))}
 
-              {/* ✈ Base Route Layer */}
+              {/* Base Route Layer */}
               <Source id="airport-routes" type="geojson" data={geojson as any} />
 
               <Layer
@@ -388,7 +388,7 @@ export default function Home() {
                 }}
               />
 
-              {/* ✨ Glow Pulse Layer for Changed Routes */}
+              {/* Glow Pulse Layer for Changed Routes */}
               {showEngines && showOptimized && (
                 <>
                   <Source
@@ -490,6 +490,17 @@ export default function Home() {
                 <div className="opacity-70">% Reduction</div>
                 <div className="text-lg font-semibold text-blue-300">
                   {optimizerData.totals.percentageReduction?.toFixed(2)}%
+                </div>
+              </div>
+
+              <div className="bg-[#0D1328] p-3 rounded-lg border border-[#181D4E] col-span-2">
+                <div className="opacity-70">Estimated Fuel Cost Savings per Passenger (USD)</div>
+                <div className="text-lg font-semibold text-emerald-300">
+                  $
+                  {optimizerData.totals.absoluteMoneySavedUsd?.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </div>
               </div>
             </div>
